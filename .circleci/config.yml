@@ -1,0 +1,19 @@
+version: 2.1
+
+orbs:
+  android: circleci/android@0.2.1
+
+jobs:
+  build:
+    description: |
+      Building CI Assistant
+
+    executor:
+      name: android
+      sdk-version: "29"
+
+    steps:
+      - checkout
+      - accept-licenses
+      - run:
+          command: ./gradlew build
