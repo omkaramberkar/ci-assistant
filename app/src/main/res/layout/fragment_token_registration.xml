@@ -89,7 +89,6 @@
             app:background="@color/secondaryColor"
             android:enabled="true"
             android:text="@string/action_register_circle_ci_token"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_input_layout_circle_ci_token_layout" />
@@ -126,7 +125,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp8"
             android:text="@string/action_create_circle_ci_token"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_circle_ci_token_text_or" />
