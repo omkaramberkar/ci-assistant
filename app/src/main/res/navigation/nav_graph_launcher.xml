@@ -4,7 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_host_launcher"
-    app:startDestination="@+id/tokenRegistration">
+    app:startDestination="@+id/loading">
+
+    <fragment
+        android:id="@+id/loading"
+        android:name="com.omkar.ciassistant.ui.loading.LoadingFragment"
+        tools:layout="@layout/fragment_token_registration">
+        <action android:id="@+id/action_loading_to_token_registration"
+            app:destination="@+id/tokenRegistration"/>
+    </fragment>
 
     <fragment
         android:id="@+id/tokenRegistration"

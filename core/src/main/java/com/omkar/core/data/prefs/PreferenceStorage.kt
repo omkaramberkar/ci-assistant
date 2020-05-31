@@ -1,4 +1,4 @@
-package com.omkar.core.data
+package com.omkar.core.data.prefs
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -14,7 +14,8 @@ interface PreferenceStorage {
 }
 
 @Singleton
-class SharedPreferenceStorage @Inject constructor(context: Context) : PreferenceStorage {
+class SharedPreferenceStorage @Inject constructor(context: Context) :
+    PreferenceStorage {
 
     // -----------------------------------------------------------------------------------------
     // Properties
@@ -30,7 +31,11 @@ class SharedPreferenceStorage @Inject constructor(context: Context) : Preference
     // PreferenceStorage implementation
     // -----------------------------------------------------------------------------------------
 
-    override var circleCIToken by StringPreference(prefs, PREF_CIRCLE_CI_TOKEN, null)
+    override var circleCIToken by StringPreference(
+        prefs,
+        PREF_CIRCLE_CI_TOKEN,
+        null
+    )
 
     // -----------------------------------------------------------------------------------------
     // Companion

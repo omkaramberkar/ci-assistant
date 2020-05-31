@@ -1,111 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_circle_ci_token"
+    android:id="@+id/container_circle_ci"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dp16"
     tools:context="com.omkar.ciassistant.ui.registration.TokenRegistrationFragment">
 
-    <ImageView
-        android:id="@+id/image_view_circle_ci_token_avatar"
-        android:layout_width="@dimen/dp72"
-        android:layout_height="@dimen/dp72"
-        android:layout_marginTop="@dimen/dp48"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_round_account_circle_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_view_circle_ci_token_text_register"
-        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp24"
-        android:layout_marginTop="@dimen/dp32"
-        android:layout_marginEnd="@dimen/dp24"
-        android:gravity="center"
-        android:text="@string/text_field_register_your_circleci_token"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view_circle_ci_token_avatar" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout_circle_ci_token_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        style="@style/Widget.MaterialComponents.AppBarLayout.Surface"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp24"
-        android:layout_marginTop="@dimen/dp8"
-        android:layout_marginEnd="@dimen/dp24"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_circle_ci_token_text_register">
+        android:layout_height="?attr/actionBarSize"
+        android:translationZ="@dimen/dp4">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_edit_text_circle_ci_token_text"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:title="@string/app_name" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:padding="@dimen/dp16">
+
+        <ImageView
+            android:id="@+id/image_view_circle_ci_token_avatar"
+            android:layout_width="@dimen/dp72"
+            android:layout_height="@dimen/dp72"
+            android:layout_marginTop="@dimen/dp48"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_round_account_circle_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_circle_ci_token_text_register"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp32"
+            android:layout_marginEnd="@dimen/dp24"
+            android:gravity="center"
+            android:text="@string/text_field_register_your_circleci_token"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_circle_ci_token_avatar" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_circle_ci_token_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_round_key_24"
-            android:drawablePadding="@dimen/dp8"
-            android:hint="@string/text_field_hint_circle_ci_token"
-            android:imeActionLabel="@string/action_register_circle_ci_token_short"
-            android:imeOptions="actionDone"
-            android:selectAllOnFocus="true"
-            android:text="b3af0c08cef1c282f3dc5cdf646576b0bf181536" />
+            android:layout_marginStart="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp24"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_circle_ci_token_text_register">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_input_edit_text_circle_ci_token_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_round_key_24"
+                android:drawablePadding="@dimen/dp8"
+                android:hint="@string/text_field_hint_circle_ci_token"
+                android:imeActionLabel="@string/action_register_circle_ci_token_short"
+                android:imeOptions="actionDone"
+                android:selectAllOnFocus="true"
+                android:text="b3af0c08cef1c282f3dc5cdf646576b0bf181536" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_circle_ci_token_register"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp24"
-        android:enabled="false"
-        android:text="@string/action_register_circle_ci_token"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_layout_circle_ci_token_layout" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <ProgressBar
-        android:id="@+id/progress_circle_ci_token"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/button_circle_ci_token_register"
-        app:layout_constraintEnd_toEndOf="@+id/button_circle_ci_token_register"
-        app:layout_constraintStart_toStartOf="@+id/button_circle_ci_token_register"
-        app:layout_constraintTop_toTopOf="@+id/button_circle_ci_token_register"
-        tools:visibility="visible" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_circle_ci_token_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp24"
+            app:background="@color/secondaryColor"
+            android:enabled="true"
+            android:text="@string/action_register_circle_ci_token"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_layout_circle_ci_token_layout" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_view_circle_ci_token_text_or"
-        style="@style/TextAppearance.MaterialComponents.Caption"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp24"
-        android:layout_marginTop="@dimen/dp16"
-        android:layout_marginEnd="@dimen/dp24"
-        android:gravity="center"
-        android:text="@string/text_field_circle_ci_token_or"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_circle_ci_token_register"/>
+        <ProgressBar
+            android:id="@+id/progress_circle_ci_token"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/button_circle_ci_token_register"
+            app:layout_constraintEnd_toEndOf="@+id/button_circle_ci_token_register"
+            app:layout_constraintStart_toStartOf="@+id/button_circle_ci_token_register"
+            app:layout_constraintTop_toTopOf="@+id/button_circle_ci_token_register"
+            tools:visibility="visible" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_circle_ci_token_create"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp8"
-        android:text="@string/action_create_circle_ci_token"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_circle_ci_token_text_or" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_circle_ci_token_text_or"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp24"
+            android:gravity="center"
+            android:text="@string/text_field_circle_ci_token_or"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_circle_ci_token_register" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_circle_ci_token_create"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            android:text="@string/action_create_circle_ci_token"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_circle_ci_token_text_or" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

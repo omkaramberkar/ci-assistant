@@ -1,15 +1,14 @@
 package com.omkar.ciassistant
 
-import androidx.lifecycle.ViewModel
-import com.omkar.core.di.ViewModelKey
-import dagger.Binds
+import android.content.res.Resources
 import dagger.Module
-import dagger.multibindings.IntoMap
+import dagger.Provides
 
 @Module
-abstract class LauncherModule {
-    @Binds
-    @IntoMap
-    @ViewModelKey(LauncherViewModel::class)
-    internal abstract fun bindLauncherViewModel(viewModel: LauncherViewModel): ViewModel
+class LauncherModule {
+
+    @Provides
+    fun provideResources(activity: LauncherActivity): Resources {
+        return activity.resources
+    }
 }
