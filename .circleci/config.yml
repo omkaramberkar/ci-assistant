@@ -1,5 +1,3 @@
-version: 2.1
-
 commands:
   restore-build-cache:
     description: |
@@ -30,7 +28,7 @@ jobs:
     description: |
       Building CI Assistant
     executor:
-      name: android
+      name: android/android
       sdk-version: "29"
     steps:
       - checkout
@@ -41,3 +39,4 @@ jobs:
       - save-build-cache
       - run:
           command: ./gradlew build
+version: 2.1
