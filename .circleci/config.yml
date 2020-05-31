@@ -14,6 +14,7 @@ commands:
           paths:
             - ~/.android/build-cache
             - ~/.android/cache
+  # Not storing artifacts for now.
   store-apk-artifacts:
     description: |
       Save the Android apk
@@ -39,4 +40,9 @@ jobs:
       - save-build-cache
       - run:
           command: ./gradlew assembleDebug
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
 version: 2.1
