@@ -38,5 +38,5 @@ jobs:
           command: ./gradlew androidDependencies
       - save-build-cache
       - run:
-          command: ./gradlew build
+          command: ./gradlew assembleDebug
 version: 2.1
