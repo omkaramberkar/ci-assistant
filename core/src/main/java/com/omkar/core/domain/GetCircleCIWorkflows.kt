@@ -1,15 +1,14 @@
 package com.omkar.core.domain
 
 import com.omkar.core.data.CircleCIRepository
-import com.omkar.core.data.model.Build
+import com.omkar.core.data.model2.Project
 import com.omkar.core.di.IoDispatcher
 import com.omkar.core.result.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-@Deprecated("This does not return any recent builds as mentioned in api, using pipelines.")
-class GetCircleCIRecentBuildsUseCase @Inject constructor(
+class GetCircleCIWorkflows @Inject constructor(
     private val repository: CircleCIRepository,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
@@ -18,9 +17,9 @@ class GetCircleCIRecentBuildsUseCase @Inject constructor(
     // Public functions
     // -----------------------------------------------------------------------------------------
 
-    suspend operator fun invoke(parameters: Boolean): Result<List<Build>> {
+    suspend operator fun invoke(parameters: Boolean): Result<List<Project>> {
         return withContext(ioDispatcher) {
-            repository.getCircleCIRecentBuilds(parameters)
+            repository.getCircleCIProjects(parameters)
         }
     }
 }

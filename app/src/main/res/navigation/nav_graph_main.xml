@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host_main"
+    app:startDestination="@+id/recentBuildsFragment">
+
+    <fragment
+        android:id="@+id/recentBuildsFragment"
+        android:name="com.omkar.ciassistant.ui.main.recentbuilds.RecentBuildsFragment"
+        android:label="@string/title_recent_builds"
+        tools:layout="@layout/fragment_recent_builds" />
+
+    <fragment
+        android:id="@+id/tokenRegistrationFragment"
+        android:name="com.omkar.ciassistant.ui.registration.TokenRegistrationFragment"
+        android:label="@string/title_token_registration"
+        tools:layout="@layout/fragment_token_registration" />
+
+</navigation>

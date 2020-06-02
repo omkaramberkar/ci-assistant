@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp8"
+    android:layout_marginBottom="@dimen/dp8"
+    app:cardCornerRadius="@dimen/dp4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/dp8"
+        android:paddingEnd="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/build_outcome_button"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp4"
+            android:gravity="center"
+            tools:icon="@drawable/ic_round_check_circle_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/success" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rebuild_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp4"
+            app:icon="@drawable/ic_round_replay_24"
+            android:drawablePadding="@dimen/dp4"
+            android:gravity="center"
+            android:text="@string/rebuild"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            app:cornerRadius="@dimen/dp16"
+            app:layout_constraintStart_toEndOf="@+id/build_outcome_button"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/user_avatar"
+            android:layout_width="@dimen/dp42"
+            android:layout_height="@dimen/dp42"
+            android:layout_marginTop="@dimen/dp8"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_round_account_circle_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/build_url_text"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            android:ellipsize="end"
+            android:maxLines="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/build_outcome_button"
+            tools:text="jobs/ciassistant/master/#1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/build_subject_text"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/build_url_text"
+            tools:text="checksum the index.json" />
+
+        <Space
+            android:id="@+id/spacer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/build_subject_text" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/build_workflow_text"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_round_swap_calls_24"
+            android:drawablePadding="@dimen/dp4"
+            android:ellipsize="end"
+            android:gravity="center|start"
+            android:minWidth="88dp"
+            android:minLines="1"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spacer"
+            tools:text="build_and_test"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/build_name_text"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_round_radio_button_checked_24"
+            android:drawablePadding="@dimen/dp4"
+            android:ellipsize="end"
+            android:gravity="center|start"
+            android:minWidth="88dp"
+            android:minLines="1"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/build_workflow_text"
+            tools:text="publish_snapshot"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/build_stop_time_text"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_round_today_24"
+            android:drawablePadding="@dimen/dp4"
+            android:gravity="center|start"
+            android:minWidth="88dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/build_name_text"
+            tools:text="4 days ago" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/build_time_text"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_round_timer_24"
+            android:drawablePadding="@dimen/dp4"
+            android:gravity="center|start"
+            android:minWidth="88dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/build_name_text"
+            tools:text="00:00" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/build_vcs_text"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_round_link_24"
+            android:drawablePadding="@dimen/dp4"
+            android:gravity="center|start"
+            android:minWidth="88dp"
+            android:textColor="?android:textColorLink"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/build_name_text"
+            tools:text="ajdnke4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -13,4 +13,5 @@
     <dimen name="dp48">48dp</dimen>
     <dimen name="dp72">72dp</dimen>
     <dimen name="dp96">96dp</dimen>
+    <dimen name="dp176">176dp</dimen>
 </resources>

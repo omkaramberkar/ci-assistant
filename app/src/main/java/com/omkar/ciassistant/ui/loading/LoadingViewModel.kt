@@ -60,6 +60,6 @@ class LoadingViewModel @Inject constructor(
     // -----------------------------------------------------------------------------------------
 
     companion object {
-        private const val MIN_SHOW_TIME = 3_000L
+        private const val MIN_SHOW_TIME = 1_000L
     }
 }

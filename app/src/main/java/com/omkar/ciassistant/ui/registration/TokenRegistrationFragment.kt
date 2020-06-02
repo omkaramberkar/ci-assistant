@@ -1,5 +1,6 @@
 package com.omkar.ciassistant.ui.registration
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +11,16 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.google.android.material.snackbar.Snackbar
 import com.omkar.ciassistant.R
 import com.omkar.ciassistant.databinding.FragmentTokenRegistrationBinding
+import com.omkar.ciassistant.ui.LaunchDestination
+import com.omkar.ciassistant.ui.main.MainActivity
 import com.omkar.core.result.EventObserver
+import com.omkar.core.util.checkAllMatched
 import com.omkar.core.util.launchUrl
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -57,10 +62,10 @@ class TokenRegistrationFragment : DaggerFragment() {
             viewLifecycleOwner,
             Observer { tokenRegistrationFormState ->
                 tokenRegistrationFormState ?: return@Observer
-                binding.buttonCircleCiTokenRegister.isEnabled =
+                binding.registerTokenButton.isEnabled =
                     tokenRegistrationFormState.isDataValid
                 tokenRegistrationFormState.circleCiTokenError?.let {
-                    binding.textInputLayoutCircleCiTokenLayout.error = getString(it)
+                    binding.registerTokenLayout.error = getString(it)
                 }
             }
         )
@@ -69,8 +74,8 @@ class TokenRegistrationFragment : DaggerFragment() {
             viewLifecycleOwner,
             Observer { tokenRegistrationResult ->
                 tokenRegistrationResult ?: return@Observer
-                binding.progressCircleCiToken.isVisible = false
-                binding.buttonCircleCiTokenRegister.isEnabled = true
+                binding.progressBar.isVisible = false
+                binding.registerTokenButton.isEnabled = true
                 tokenRegistrationResult.success?.let {
                     showCircleCiTokenRegistrationSuccess(it)
                 }
@@ -84,35 +89,32 @@ class TokenRegistrationFragment : DaggerFragment() {
         tokenRegistrationViewModel.launchDestination.observe(
             viewLifecycleOwner,
             EventObserver { launchDestination ->
-//                when (launchDestination) {
-//                    LaunchDestination.MAIN_ACTIVITY ->
-//                        findNavController().navigate(main_nav_graph.action.to_circle_ci_activity)
-//                }
+                when (launchDestination) {
+                    LaunchDestination.MAIN_ACTIVITY ->
+                        activity?.let { startActivity(Intent(it, MainActivity::class.java)) }
+                    else -> throw IllegalStateException("Launch Destination is not supported")
+                }.checkAllMatched
             })
 
-        with(binding.textInputEditTextCircleCiTokenText) {
+        with(binding.registerTokenInputText) {
             doAfterTextChanged {
-                tokenRegistrationViewModel.tokenUpdated(
-                    binding.textInputEditTextCircleCiTokenText.text.toString().trim()
-                )
+                tokenRegistrationViewModel.tokenUpdated(text.toString().trim())
             }
             setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    startCircleCiUserRegistration(
-                        binding.textInputEditTextCircleCiTokenText.text.toString().trim()
-                    )
+                    startCircleCiUserRegistration(text.toString().trim())
                 }
                 return@setOnEditorActionListener false
             }
         }
 
-        binding.buttonCircleCiTokenRegister.setOnClickListener {
+        binding.registerTokenButton.setOnClickListener {
             startCircleCiUserRegistration(
-                binding.textInputEditTextCircleCiTokenText.text.toString().trim()
+                binding.registerTokenInputText.text.toString().trim()
             )
         }
 
-        binding.buttonCircleCiTokenCreate.setOnClickListener {
+        binding.createTokenButton.setOnClickListener {
             activity?.launchUrl(CIRCLE_CI_ACCOUNT_API)
         }
     }
@@ -127,13 +129,13 @@ class TokenRegistrationFragment : DaggerFragment() {
     // -----------------------------------------------------------------------------------------
 
     private fun startCircleCiUserRegistration(circleCiToken: String) {
-        binding.progressCircleCiToken.isVisible = true
-        binding.buttonCircleCiTokenRegister.isEnabled = false
+        binding.progressBar.isVisible = true
+        binding.registerTokenButton.isEnabled = false
         tokenRegistrationViewModel.registerToken(circleCiToken)
     }
 
     private fun showCircleCiTokenRegistrationSuccess(success: TokenRegistrationSuccess) {
-        binding.imageViewCircleCiTokenAvatar.load(success.avatarUrl) {
+        binding.registerTokenAvatar.load(success.avatarUrl) {
             crossfade(true)
             placeholder(R.drawable.ic_round_account_circle_24)
             transformations(CircleCropTransformation())

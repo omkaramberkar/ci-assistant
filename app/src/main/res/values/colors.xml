@@ -16,4 +16,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="failed">#F44336</color>
+    <color name="success">#4CAF50</color>
+    <color name="running">#6ff9ff</color>
+    <color name="notRunning">#b085f5</color>
+    <color name="notRun">#707070</color>
 </resources>
