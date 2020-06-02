@@ -48,6 +48,7 @@ class RecentBuildsFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.progress.isVisible = true
 
         recentBuildsViewModel.pipelines.observe(
             viewLifecycleOwner,
@@ -59,17 +60,6 @@ class RecentBuildsFragment : DaggerFragment() {
                 }
             }
         )
-
-//        recentBuildsViewModel.recentBuildsResult.observe(
-//            viewLifecycleOwner,
-//            Observer { circleCiRecentBuildsResult ->
-//                circleCiRecentBuildsResult ?: return@Observer
-//                binding.progress.isVisible = false
-//                circleCiRecentBuildsResult.success?.let {
-//                    showLoadCircleCiRecentBuildsSuccess(it)
-//                }
-//            }
-//        )
 
         recentBuildsViewModel.snackbar.observe(
             viewLifecycleOwner,
@@ -90,10 +80,6 @@ class RecentBuildsFragment : DaggerFragment() {
     // -----------------------------------------------------------------------------------------
     // Private functions
     // -----------------------------------------------------------------------------------------
-
-    private fun showLoadCircleCiRecentBuildsSuccess(success: RecentBuildsSuccess) {
-        //adapter.submitList(success.recentBuilds)
-    }
 
     private fun showLoadPipelinesSuccess(success: PipelinesSuccess) {
         success.pipelines?.let {

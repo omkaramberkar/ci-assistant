@@ -27,5 +27,6 @@
     <!-- Main Activity -->
     <string name="title_recent_builds">Pipelines</string>
     <string name="title_token_registration">Register Token</string>
+    <string name="pipeline_number">#%1$s</string>
 
 </resources>

@@ -42,7 +42,6 @@ class RecentBuildsViewModel @Inject constructor(
 
     init {
         loadProjects(true)
-        loadRecentBuilds(true)
     }
 
     // -----------------------------------------------------------------------------------------
