@@ -1,4 +1,4 @@
-package com.omkar.ciassistant.ui.main.recentbuilds
+package com.omkar.ciassistant.ui.main.pipelines
 
 import com.omkar.core.data.model2.Project
 

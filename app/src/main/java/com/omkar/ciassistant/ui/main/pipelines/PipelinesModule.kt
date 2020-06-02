@@ -1,4 +1,4 @@
-package com.omkar.ciassistant.ui.main.recentbuilds
+package com.omkar.ciassistant.ui.main.pipelines
 
 import androidx.lifecycle.ViewModel
 import com.omkar.core.di.FragmentScoped
@@ -9,14 +9,14 @@ import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module
-internal abstract class RecentBuildsModule {
+internal abstract class PipelinesModule {
 
     @FragmentScoped
     @ContributesAndroidInjector
-    internal abstract fun contributeRecentBuildsFragment(): RecentBuildsFragment
+    internal abstract fun contributePipelinesFragment(): PipelinesFragment
 
     @Binds
     @IntoMap
-    @ViewModelKey(RecentBuildsViewModel::class)
-    internal abstract fun bindRecentBuildsViewModel(viewModel: RecentBuildsViewModel): ViewModel
+    @ViewModelKey(PipelinesViewModel::class)
+    internal abstract fun bindRecentBuildsViewModel(viewModel: PipelinesViewModel): ViewModel
 }

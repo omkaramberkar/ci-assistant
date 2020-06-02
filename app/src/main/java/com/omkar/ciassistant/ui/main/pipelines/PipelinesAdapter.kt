@@ -1,4 +1,4 @@
-package com.omkar.ciassistant.ui.main.recentbuilds
+package com.omkar.ciassistant.ui.main.pipelines
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,11 +12,11 @@ import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.omkar.ciassistant.R
 import com.omkar.ciassistant.databinding.ItemRecentBuildBinding
-import com.omkar.ciassistant.ui.main.recentbuilds.RecentBuildsAdapter.CircleCiRecentBuildViewHolder
+import com.omkar.ciassistant.ui.main.pipelines.PipelinesAdapter.CircleCiRecentBuildViewHolder
 import com.omkar.core.data.model2.Pipeline
 
-class RecentBuildsAdapter
-    : ListAdapter<Pipeline, CircleCiRecentBuildViewHolder>(RecentBuildsDiffCallback()) {
+class PipelinesAdapter
+    : ListAdapter<Pipeline, CircleCiRecentBuildViewHolder>(PipelinesDiffCallback()) {
 
     // -----------------------------------------------------------------------------------------
     // ListAdapter implementation

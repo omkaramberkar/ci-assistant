@@ -1,4 +1,4 @@
-package com.omkar.ciassistant.ui.main.recentbuilds
+package com.omkar.ciassistant.ui.main.pipelines
 
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
@@ -6,20 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.omkar.ciassistant.R
-import com.omkar.core.data.model.Build
 import com.omkar.core.data.model2.Pipeline
 import com.omkar.core.data.model2.Project
 import com.omkar.core.domain.GetCircleCIPipelinesUseCase
 import com.omkar.core.domain.GetCircleCIProjectsUseCase
-import com.omkar.core.domain.GetCircleCIRecentBuildsUseCase
 import com.omkar.core.result.Event
 import com.omkar.core.result.Result
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class RecentBuildsViewModel @Inject constructor(
+class PipelinesViewModel @Inject constructor(
     private val resources: Resources,
-    private val getCircleCIRecentBuildsUseCase: GetCircleCIRecentBuildsUseCase,
     private val getCircleCIProjectsUseCase: GetCircleCIProjectsUseCase,
     private val getCircleCIPipelinesUseCase: GetCircleCIPipelinesUseCase
 ) : ViewModel() {
@@ -27,9 +24,6 @@ class RecentBuildsViewModel @Inject constructor(
     // -----------------------------------------------------------------------------------------
     // Properties
     // -----------------------------------------------------------------------------------------
-
-    private val _recentBuildsResult = MutableLiveData<RecentBuildsResult>()
-    val recentBuildsResult: LiveData<RecentBuildsResult> = _recentBuildsResult
 
     private val _projects = MutableLiveData<ProjectsResult>()
     val projects: LiveData<ProjectsResult> = _projects
@@ -53,15 +47,6 @@ class RecentBuildsViewModel @Inject constructor(
             when (val result = getCircleCIProjectsUseCase(forceUpdate)) {
                 is Result.Success -> onLoadProjectsSuccess(result.data)
                 is Result.Error -> onLoadProjectsError()
-            }
-        }
-    }
-
-    fun loadRecentBuilds(forceUpdate: Boolean) {
-        viewModelScope.launch {
-            when (val result = getCircleCIRecentBuildsUseCase(forceUpdate)) {
-                is Result.Success -> onLoadCircleCiRecentBuildsSuccess(result.data)
-                is Result.Error -> onLoadCircleCiRecentBuildsError()
             }
         }
     }
@@ -106,17 +91,5 @@ class RecentBuildsViewModel @Inject constructor(
 
     private fun onLoadPipelinesError() {
         _snackbar.value = Event(resources.getString(R.string.loading_pipelines_failed))
-    }
-
-    private fun onLoadCircleCiRecentBuildsSuccess(data: List<Build>) {
-        _recentBuildsResult.value = RecentBuildsResult(
-            success = RecentBuildsSuccess(
-                recentBuilds = data
-            )
-        )
-    }
-
-    private fun onLoadCircleCiRecentBuildsError() {
-        _snackbar.value = Event(resources.getString(R.string.loading_recent_builds_failed))
     }
 }

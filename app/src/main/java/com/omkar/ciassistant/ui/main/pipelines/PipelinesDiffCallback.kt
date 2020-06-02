@@ -1,9 +1,9 @@
-package com.omkar.ciassistant.ui.main.recentbuilds
+package com.omkar.ciassistant.ui.main.pipelines
 
 import androidx.recyclerview.widget.DiffUtil
 import com.omkar.core.data.model2.Pipeline
 
-class RecentBuildsDiffCallback : DiffUtil.ItemCallback<Pipeline>() {
+class PipelinesDiffCallback : DiffUtil.ItemCallback<Pipeline>() {
 
     // -----------------------------------------------------------------------------------------
     // DiffUtil.ItemCallback implementation

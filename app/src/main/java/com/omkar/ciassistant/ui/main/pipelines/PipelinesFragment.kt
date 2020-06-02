@@ -1,4 +1,4 @@
-package com.omkar.ciassistant.ui.main.recentbuilds
+package com.omkar.ciassistant.ui.main.pipelines
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
-import com.omkar.ciassistant.databinding.FragmentRecentBuildsBinding
+import com.omkar.ciassistant.databinding.FragmentPipelinesBinding
 import com.omkar.core.result.EventObserver
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class RecentBuildsFragment : DaggerFragment() {
+class PipelinesFragment : DaggerFragment() {
 
     // -----------------------------------------------------------------------------------------
     // Properties
@@ -23,15 +23,15 @@ class RecentBuildsFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val recentBuildsViewModel: RecentBuildsViewModel by viewModels { viewModelFactory }
+    private val pipelinesViewModel: PipelinesViewModel by viewModels { viewModelFactory }
 
-    private var _binding: FragmentRecentBuildsBinding? = null
-    private val binding: FragmentRecentBuildsBinding
+    private var _binding: FragmentPipelinesBinding? = null
+    private val binding: FragmentPipelinesBinding
         get() = _binding!!
 
     private var snackbar: Snackbar? = null
 
-    private val adapter = RecentBuildsAdapter()
+    private val adapter = PipelinesAdapter()
 
     // -----------------------------------------------------------------------------------------
     // Fragment implementation
@@ -42,7 +42,7 @@ class RecentBuildsFragment : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentRecentBuildsBinding.inflate(inflater, container, false)
+        _binding = FragmentPipelinesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -50,7 +50,7 @@ class RecentBuildsFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.progress.isVisible = true
 
-        recentBuildsViewModel.pipelines.observe(
+        pipelinesViewModel.pipelines.observe(
             viewLifecycleOwner,
             Observer { pipelinesResult ->
                 pipelinesResult ?: return@Observer
@@ -61,7 +61,7 @@ class RecentBuildsFragment : DaggerFragment() {
             }
         )
 
-        recentBuildsViewModel.snackbar.observe(
+        pipelinesViewModel.snackbar.observe(
             viewLifecycleOwner,
             EventObserver { string ->
                 showSnackbar(string)

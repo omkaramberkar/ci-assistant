@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_marginStart="@dimen/dp8"
     android:layout_marginEnd="@dimen/dp8"
-    tools:context="ui.main.recentbuilds.RecentBuildsFragment">
+    tools:context="ui.main.pipelines.PipelinesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recent_builds_list"

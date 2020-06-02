@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_host_main"
-    app:startDestination="@+id/recentBuildsFragment">
+    app:startDestination="@+id/pipelinesFragment">
 
     <fragment
-        android:id="@+id/recentBuildsFragment"
-        android:name="com.omkar.ciassistant.ui.main.recentbuilds.RecentBuildsFragment"
+        android:id="@+id/pipelinesFragment"
+        android:name="com.omkar.ciassistant.ui.main.pipelines.PipelinesFragment"
         android:label="@string/title_recent_builds"
-        tools:layout="@layout/fragment_recent_builds" />
+        tools:layout="@layout/fragment_pipelines" />
 
     <fragment
         android:id="@+id/tokenRegistrationFragment"

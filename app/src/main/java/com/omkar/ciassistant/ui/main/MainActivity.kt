@@ -54,16 +54,4 @@ class MainActivity : DaggerAppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-    // -----------------------------------------------------------------------------------------
-    // Private functions
-    // -----------------------------------------------------------------------------------------
-
-    // -----------------------------------------------------------------------------------------
-    // Companion
-    // -----------------------------------------------------------------------------------------
-
-    companion object {
-
-    }
 }

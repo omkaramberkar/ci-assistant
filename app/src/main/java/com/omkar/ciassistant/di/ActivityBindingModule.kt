@@ -5,7 +5,7 @@ import com.omkar.ciassistant.LauncherModule
 import com.omkar.ciassistant.ui.loading.LoadingModule
 import com.omkar.ciassistant.ui.main.MainActivity
 import com.omkar.ciassistant.ui.main.MainModule
-import com.omkar.ciassistant.ui.main.recentbuilds.RecentBuildsModule
+import com.omkar.ciassistant.ui.main.pipelines.PipelinesModule
 import com.omkar.ciassistant.ui.registration.TokenRegistrationModule
 import com.omkar.core.di.ActivityScoped
 import dagger.Module
@@ -32,7 +32,7 @@ abstract class ActivityBindingModule {
             // activity
             MainModule::class,
             // fragments
-            RecentBuildsModule::class
+            PipelinesModule::class
         ]
     )
     internal abstract fun mainActivity(): MainActivity
