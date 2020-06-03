@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.omkar.ciassistant.R
-import com.omkar.ciassistant.databinding.ItemRecentBuildBinding
+import com.omkar.ciassistant.databinding.ItemPipelineBinding
 import com.omkar.ciassistant.ui.main.pipelines.PipelinesAdapter.CircleCiRecentBuildViewHolder
 import com.omkar.core.data.model2.Pipeline
 
@@ -27,7 +27,7 @@ class PipelinesAdapter
         viewType: Int
     ): CircleCiRecentBuildViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ItemRecentBuildBinding.inflate(layoutInflater, parent, false)
+        val binding = ItemPipelineBinding.inflate(layoutInflater, parent, false)
         return CircleCiRecentBuildViewHolder(binding)
     }
 
@@ -40,7 +40,7 @@ class PipelinesAdapter
     // -----------------------------------------------------------------------------------------
 
     inner class CircleCiRecentBuildViewHolder(
-        private val binding: ItemRecentBuildBinding
+        private val binding: ItemPipelineBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         // -----------------------------------------------------------------------------------------

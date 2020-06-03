@@ -11,10 +11,4 @@
         android:label="@string/title_recent_builds"
         tools:layout="@layout/fragment_pipelines" />
 
-    <fragment
-        android:id="@+id/tokenRegistrationFragment"
-        android:name="com.omkar.ciassistant.ui.registration.TokenRegistrationFragment"
-        android:label="@string/title_token_registration"
-        tools:layout="@layout/fragment_token_registration" />
-
 </navigation>

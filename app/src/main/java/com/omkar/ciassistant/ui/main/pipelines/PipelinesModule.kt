@@ -18,5 +18,5 @@ internal abstract class PipelinesModule {
     @Binds
     @IntoMap
     @ViewModelKey(PipelinesViewModel::class)
-    internal abstract fun bindRecentBuildsViewModel(viewModel: PipelinesViewModel): ViewModel
+    internal abstract fun bindPipelinesViewModel(viewModel: PipelinesViewModel): ViewModel
 }
