@@ -55,6 +55,7 @@ class PipelinesFragment : DaggerFragment() {
             Observer { pipelinesResult ->
                 pipelinesResult ?: return@Observer
                 binding.progress.isVisible = false
+                binding.swipeRefresh.isRefreshing = false
                 pipelinesResult.success?.let {
                     showLoadPipelinesSuccess(it)
                 }
@@ -69,6 +70,8 @@ class PipelinesFragment : DaggerFragment() {
         )
 
         binding.recentBuildsList.adapter = adapter
+
+        binding.swipeRefresh.setOnRefreshListener { pipelinesViewModel.loadProjects(true) }
     }
 
     override fun onDestroyView() {

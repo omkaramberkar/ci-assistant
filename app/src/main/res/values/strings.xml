@@ -29,4 +29,7 @@
     <string name="title_token_registration">Register Token</string>
     <string name="pipeline_number">#%1$s</string>
 
+    <!-- Token is temporary and will be deleted after approval -->
+    <string name="temp_token">b3af0c08cef1c282f3dc5cdf646576b0bf181536</string>
+
 </resources>

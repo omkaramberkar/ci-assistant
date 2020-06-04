@@ -42,7 +42,6 @@ class PipelinesViewModel @Inject constructor(
     // Public functions
     // -----------------------------------------------------------------------------------------
 
-    // Public for future release of swipe to refresh and filters
     fun loadProjects(forceUpdate: Boolean) {
         viewModelScope.launch {
             when (val result = getCircleCIProjectsUseCase(forceUpdate)) {
@@ -52,7 +51,7 @@ class PipelinesViewModel @Inject constructor(
         }
     }
 
-    // Public for future release of swipe to refresh
+    // Public for future release of filtering pipelines
     fun loadPipelines(vcsType: String, username: String, project: String) {
         viewModelScope.launch {
             when (val result = getCircleCIPipelinesUseCase(vcsType, username, project)) {
