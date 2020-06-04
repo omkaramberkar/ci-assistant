@@ -1,7 +1,6 @@
 package com.omkar.core.data
 
 import com.omkar.core.data.api.CircleCIService
-import com.omkar.core.data.model.Build
 import com.omkar.core.data.model.Me
 import com.omkar.core.data.model2.Pipeline
 import com.omkar.core.data.model2.Project
@@ -77,14 +76,15 @@ class CircleCIRemoteDataSource @Inject constructor(private val service: CircleCI
         circleToken: String
     ): Result<List<Pipeline>> {
         try {
-            val pipelinesResponse = service.getPipelines(vcsType, username, project, circleToken)
+            val pipelinesResponse =
+                service.getPipelinesForProject(vcsType, username, project, circleToken)
             if (pipelinesResponse.isSuccessful) {
                 val pipelinesResponseBody = pipelinesResponse.body()
                 if (pipelinesResponseBody != null) {
                     val pipelinesWithWorkflow = mutableListOf<Pipeline>()
                     pipelinesResponseBody.pipelines?.forEach { pipeline ->
                         pipeline.id?.let { id ->
-                            val workflowsResponse = service.getWorkflows(id, circleToken)
+                            val workflowsResponse = service.getWorkflowsForPipeline(id, circleToken)
                             if (workflowsResponse.isSuccessful) {
                                 val workflowsResponseBody = workflowsResponse.body()
                                 if (workflowsResponseBody != null) {
@@ -110,7 +110,7 @@ class CircleCIRemoteDataSource @Inject constructor(private val service: CircleCI
         circleToken: String
     ): Result<Workflows> {
         try {
-            val response = service.getWorkflows(pipelineId, circleToken)
+            val response = service.getWorkflowsForPipeline(pipelineId, circleToken)
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {
@@ -121,22 +121,6 @@ class CircleCIRemoteDataSource @Inject constructor(private val service: CircleCI
         } catch (e: Exception) {
             e.printStackTrace()
             return Result.Error(IOException("Error getting user", e))
-        }
-    }
-
-    suspend fun getCircleCIRecentBuilds(circleCiToken: String): Result<List<Build>> {
-        try {
-            val response = service.getRecentBuilds(circleCiToken)
-            if (response.isSuccessful) {
-                val body = response.body()
-                if (body != null) {
-                    return Result.Success(body)
-                }
-            }
-            return Result.Error(IOException("Error getting recent builds ${response.code()}"))
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return Result.Error(IOException("Error getting recent builds", e))
         }
     }
 }

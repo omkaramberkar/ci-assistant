@@ -1,6 +1,5 @@
 package com.omkar.core.data
 
-import com.omkar.core.data.model.Build
 import com.omkar.core.data.model.Me
 import com.omkar.core.data.model2.Pipeline
 import com.omkar.core.data.model2.Project
@@ -18,8 +17,6 @@ class CircleCIRepository @Inject constructor(
     // -----------------------------------------------------------------------------------------
 
     private var cachedMe: Me? = null
-
-    private var cachedRecentBuilds: List<Build>? = null
 
     private var cachedProjects: List<Project>? = null
 
@@ -79,25 +76,6 @@ class CircleCIRepository @Inject constructor(
 //        }
 //        return remoteDataSource.getWorkflows(circleCiToken)
 //    }
-
-    suspend fun getCircleCIRecentBuilds(forceUpdate: Boolean): Result<List<Build>> {
-        val circleCiToken = preferenceStorage.circleCIToken
-        if (circleCiToken.isNullOrBlank()) {
-            throw IllegalStateException("CircleCi Token not registered.")
-        }
-        val diff = System.currentTimeMillis() - startTime
-        val cachedRecentBuilds = this.cachedRecentBuilds
-        if (cachedRecentBuilds != null && !forceUpdate
-            && (diff >= MIN_NEW_REQUEST_DELAY || startTime == -1)
-        ) {
-            return Result.Success(cachedRecentBuilds)
-        }
-        val result = remoteDataSource.getCircleCIRecentBuilds(circleCiToken)
-        if (result is Result.Success) {
-            this.cachedRecentBuilds = result.data
-        }
-        return result
-    }
 
     // -----------------------------------------------------------------------------------------
     // Companion

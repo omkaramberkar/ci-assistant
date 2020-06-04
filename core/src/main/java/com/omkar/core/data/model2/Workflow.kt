@@ -7,7 +7,7 @@ class Workflow(
     @field:Json(name = "id") val id: String? = null,
     @field:Json(name = "name") val name: String? = null,
     @field:Json(name = "project_slug") val projectSlug: String? = null,
-    @field:Json(name = "status") val status: String? = null,
+    @field:Json(name = "status") val status: Status? = null,
     @field:Json(name = "started_by") val startedBy: String? = null,
     @field:Json(name = "pipeline_number") val pipelineNumber: Int? = null,
     @field:Json(name = "created_at") val createdAt: String? = null,

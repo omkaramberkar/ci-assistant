@@ -14,6 +14,7 @@ import com.omkar.ciassistant.R
 import com.omkar.ciassistant.databinding.ItemPipelineBinding
 import com.omkar.ciassistant.ui.main.pipelines.PipelinesAdapter.CircleCiRecentBuildViewHolder
 import com.omkar.core.data.model2.Pipeline
+import com.omkar.core.data.model2.Status
 
 class PipelinesAdapter
     : ListAdapter<Pipeline, CircleCiRecentBuildViewHolder>(PipelinesDiffCallback()) {
@@ -73,32 +74,37 @@ class PipelinesAdapter
             val lastWorkflow = pipeline.workflows?.last()
             lastWorkflow?.let { workflow ->
                 when (workflow.status) {
-                    QUEUED -> setTextViewCircleCiBuildOutcome(
+                    Status.QUEUED -> setTextViewCircleCiBuildOutcome(
                         R.color.notRunning,
                         R.string.queued,
                         R.drawable.ic_round_remove_circle_24
                     )
-                    NOT_RUN -> setTextViewCircleCiBuildOutcome(
+                    Status.BLOCKED -> setTextViewCircleCiBuildOutcome(
+                        R.color.notRun,
+                        R.string.not_running,
+                        R.drawable.ic_round_more_horiz_24
+                    )
+                    Status.NOT_RUN -> setTextViewCircleCiBuildOutcome(
                         R.color.notRun,
                         R.string.not_run,
                         R.drawable.ic_round_remove_circle_24
                     )
-                    NOT_RUNNING -> setTextViewCircleCiBuildOutcome(
+                    Status.NOT_RUNNING -> setTextViewCircleCiBuildOutcome(
                         R.color.notRunning,
                         R.string.not_running,
                         R.drawable.ic_round_more_horiz_24
                     )
-                    RUNNING -> setTextViewCircleCiBuildOutcome(
+                    Status.RUNNING -> setTextViewCircleCiBuildOutcome(
                         R.color.running,
                         R.string.running,
                         R.drawable.ic_round_radio_button_checked_24
                     )
-                    SUCCESS -> setTextViewCircleCiBuildOutcome(
+                    Status.SUCCESS -> setTextViewCircleCiBuildOutcome(
                         R.color.success,
                         R.string.success,
                         R.drawable.ic_round_check_circle_24
                     )
-                    FAILED -> setTextViewCircleCiBuildOutcome(
+                    Status.FAILED -> setTextViewCircleCiBuildOutcome(
                         R.color.failed,
                         R.string.failed,
                         R.drawable.ic_round_error_24
@@ -118,14 +124,5 @@ class PipelinesAdapter
                 icon = ResourcesCompat.getDrawable(resources, drawableRes, null)
             }
         }
-    }
-
-    companion object {
-        private const val QUEUED = "queued"
-        private const val NOT_RUN = "not_run"
-        private const val NOT_RUNNING = "not_running"
-        private const val RUNNING = "running"
-        private const val SUCCESS = "success"
-        private const val FAILED = "failed"
     }
 }
