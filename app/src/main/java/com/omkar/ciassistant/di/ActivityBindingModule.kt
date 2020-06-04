@@ -3,6 +3,9 @@ package com.omkar.ciassistant.di
 import com.omkar.ciassistant.LauncherActivity
 import com.omkar.ciassistant.LauncherModule
 import com.omkar.ciassistant.ui.loading.LoadingModule
+import com.omkar.ciassistant.ui.main.MainActivity
+import com.omkar.ciassistant.ui.main.MainModule
+import com.omkar.ciassistant.ui.main.pipelines.PipelinesModule
 import com.omkar.ciassistant.ui.registration.TokenRegistrationModule
 import com.omkar.core.di.ActivityScoped
 import dagger.Module
@@ -23,14 +26,14 @@ abstract class ActivityBindingModule {
     )
     internal abstract fun contributeLauncherActivity(): LauncherActivity
 
-//    @ActivityScoped
-//    @ContributesAndroidInjector(
-//        modules = [
-//        // activity
-//        MainActivityModule::class,
-//        // fragments
-//
-//        ]
-//    )
-//    internal abstract fun mainActivity(): MainActivity
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            // activity
+            MainModule::class,
+            // fragments
+            PipelinesModule::class
+        ]
+    )
+    internal abstract fun mainActivity(): MainActivity
 }

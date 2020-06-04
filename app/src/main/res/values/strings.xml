@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CI Assistant</string>
 
-    <!-- CircleCi Token Registration Fragment -->
+    <!-- Token Registration Fragment -->
     <string name="text_field_hint_circle_ci_token">CircleCI Token</string>
     <string name="action_register_circle_ci_token">Register Token</string>
     <string name="action_create_circle_ci_token">Create Token</string>
@@ -12,7 +12,7 @@
     <string name="registration_failed">Could not register token, verify token and retry</string>
     <string name="welcome">Welcome %1s</string>
 
-    <!-- CircleCi Recent Builds Fragment -->
+    <!-- Recent Builds Fragment -->
     <string name="success">Success</string>
     <string name="failed">Failed</string>
     <string name="queued">Queued</string>
@@ -21,7 +21,12 @@
     <string name="not_run">Not Run</string>
     <string name="rebuild">rebuild</string>
     <string name="loading_recent_builds_failed">Could not load recent builds.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loading_projects_failed">Could not load projects.</string>
+    <string name="loading_pipelines_failed">Could not load pipelines.</string>
+
+    <!-- Main Activity -->
+    <string name="title_recent_builds">Pipelines</string>
+    <string name="title_token_registration">Register Token</string>
+    <string name="pipeline_number">#%1$s</string>
 
 </resources>

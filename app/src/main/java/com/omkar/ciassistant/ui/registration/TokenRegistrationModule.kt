@@ -12,7 +12,7 @@ import dagger.multibindings.IntoMap
 internal abstract class TokenRegistrationModule {
 
     @FragmentScoped
-    @ContributesAndroidInjector()
+    @ContributesAndroidInjector
     internal abstract fun contributeTokenRegistrationFragment(): TokenRegistrationFragment
 
     @Binds

@@ -1,5 +1,6 @@
 package com.omkar.ciassistant.ui.loading
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.omkar.ciassistant.R
 import com.omkar.ciassistant.databinding.FragmentLoadingBinding
 import com.omkar.ciassistant.ui.LaunchDestination
+import com.omkar.ciassistant.ui.main.MainActivity
 import com.omkar.core.result.EventObserver
 import com.omkar.core.util.checkAllMatched
 import dagger.android.support.DaggerFragment
@@ -48,13 +50,12 @@ class LoadingFragment : DaggerFragment() {
         launcherViewModel.launchDestination.observe(
             viewLifecycleOwner,
             EventObserver { destination ->
-                val destinationId = when (destination) {
+                when (destination) {
                     LaunchDestination.TOKEN_REGISTRATION_FRAGMENT ->
-                        R.id.action_loading_to_token_registration
+                        findNavController().navigate(R.id.action_loading_to_token_registration)
                     LaunchDestination.MAIN_ACTIVITY ->
-                        R.id.action_loading_to_token_registration
+                        activity?.let { startActivity(Intent(it, MainActivity::class.java)) }
                 }.checkAllMatched
-                findNavController().navigate(destinationId)
             }
         )
     }

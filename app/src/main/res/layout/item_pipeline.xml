@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp8"
+    app:cardCornerRadius="@dimen/dp4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/dp8"
+        android:paddingEnd="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/pipeline_number_text"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="#1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/pipeline_status"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            android:drawablePadding="@dimen/dp4"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pipeline_number_text"
+            tools:icon="@drawable/ic_round_check_circle_24"
+            tools:text="@string/success" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/pipeline_workflow_name_text"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            android:drawableStart="@drawable/ic_round_swap_calls_24"
+            android:drawablePadding="@dimen/dp4"
+            android:ellipsize="end"
+            android:gravity="center|start"
+            android:minWidth="88dp"
+            android:minLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pipeline_status"
+            tools:text="build_and_test"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/pipeline_vcs_branch_text"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_round_call_split_24"
+            android:drawablePadding="@dimen/dp4"
+            android:ellipsize="end"
+            android:gravity="center|start"
+            android:minWidth="88dp"
+            android:minLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pipeline_workflow_name_text"
+            tools:text="publish_snapshot"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/pipeline_trigger_actor_avatar_url_image"
+            android:layout_width="@dimen/dp32"
+            android:layout_height="@dimen/dp32"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_round_account_circle_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pipeline_vcs_branch_text" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/pipeline_trigger_actor_login_text"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp8"
+            android:drawablePadding="@dimen/dp4"
+            android:ellipsize="end"
+            android:gravity="center|start"
+            android:minWidth="88dp"
+            android:minLines="1"
+            app:layout_constraintBottom_toBottomOf="@+id/pipeline_trigger_actor_avatar_url_image"
+            app:layout_constraintStart_toEndOf="@+id/pipeline_trigger_actor_avatar_url_image"
+            app:layout_constraintTop_toTopOf="@+id/pipeline_trigger_actor_avatar_url_image"
+            tools:text="John Doe"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/pipeline_vcs_commit_subject_text"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp4"
+            android:ellipsize="end"
+            android:gravity="center|start"
+            android:minWidth="88dp"
+            android:minLines="1"
+            app:layout_constraintStart_toStartOf="@+id/pipeline_trigger_actor_login_text"
+            app:layout_constraintTop_toBottomOf="@+id/pipeline_trigger_actor_avatar_url_image"
+            tools:text="build_and_test"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
